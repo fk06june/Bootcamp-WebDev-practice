@@ -1,0 +1,14 @@
+.highlight{
+    color:blue;
+    font-size: 50px;
+}
+
+.box{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    justify-content: center;
+}
+
+.selected{
+    color: yellow;
+}
