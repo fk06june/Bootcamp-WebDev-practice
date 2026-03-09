@@ -31,7 +31,7 @@ for(let i=0; i<products.length; i++){
         /* Ajouter selected au produit cliqué*/
         this.classList.add("selected");
 
-        /* stocker le produit sélectionné*/
+        /* stocker le product selected*/
         selectedProduct=this;
 
         /* modifier le titre*/
@@ -63,4 +63,26 @@ button.addEventListener("click", function(){
 
 });
 
+/* Ajouter un button pour supprimer les éléments du panier */
+
+/*création du boutton de suppression*/
+
+let clearButton = document.createElement("button");
+clearButton.textContent = "Supprimer";
+
+
+let cart = document.querySelector("#cart");
+cart.appendChild(clearButton);
+
+/* Ajouter un événement au bouton de suppression pour vider le panier */
+clearButton.addEventListener("click", function(){
+    while(cart.firstChild){
+        cart.removeChild(cart.firstChild);
+    }
+    if(confirm("Êtes-vous sûr de vouloir vider le panier ?")){
+        cart.innerHTML = ""; // Vider le contenu du panier
+    }
+})
+
+    
 
