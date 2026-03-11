@@ -55,6 +55,21 @@ button.addEventListener("click", function(){
         /* ajouter l'élément au panier*/
         cart.appendChild(item);
         
+        /* ajouter le bouton supprimer si pas déjà présent */
+        if (!document.querySelector("#clearBtn")) {
+            let clearButton = document.createElement("button");
+            clearButton.id = "clearBtn";
+            clearButton.textContent = "Supprimer";
+            cart.appendChild(clearButton);
+            
+            /* Ajouter un événement au bouton de suppression pour vider le panier */
+            clearButton.addEventListener("click", function(){
+                if(confirm("Êtes-vous sûr de vouloir vider le panier ?")){
+                    cart.innerHTML = ""; // Vider le contenu du panier
+                }
+            });
+        }
+        
         /* réinitialiser la sélection*/
         selectedProduct.classList.remove("selected");
         selectedProduct=null;
@@ -62,27 +77,3 @@ button.addEventListener("click", function(){
     }
 
 });
-
-/* Ajouter un button pour supprimer les éléments du panier */
-
-/*création du boutton de suppression*/
-
-let clearButton = document.createElement("button");
-clearButton.textContent = "Supprimer";
-
-
-let cart = document.querySelector("#cart");
-cart.appendChild(clearButton);
-
-/* Ajouter un événement au bouton de suppression pour vider le panier */
-clearButton.addEventListener("click", function(){
-    while(cart.firstChild){
-        cart.removeChild(cart.firstChild);
-    }
-    if(confirm("Êtes-vous sûr de vouloir vider le panier ?")){
-        cart.innerHTML = ""; // Vider le contenu du panier
-    }
-})
-
-    
-
